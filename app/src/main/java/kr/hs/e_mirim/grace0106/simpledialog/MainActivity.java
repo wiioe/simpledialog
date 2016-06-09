@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     String[] items = new String[]{"젤리빈","킷캣","롤리팝"};
-    boolean[] checkArr = {false, false};
+    boolean[] checkArr = {false, true, false};
     Button but;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +30,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         but.setText(items[which]);
                     }
                 });*/
-        dialog.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
+        /*dialog.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                but.setText(items[which]);
+            }
+        });*/
+        dialog.setMultiChoiceItems(items, checkArr, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
                 but.setText(items[which]);
             }
         });
